@@ -57,7 +57,7 @@ def db_lang_init(db):
                           {"lang": "Hungarian", "code": "hu"},
                           {"lang": "Italian", "code": "it"},
                           {"lang": "Japanese", "code": "ja"},
-                          {"lang": "Lithuanian", "code": "lt"},
+                          {"lang": "Korean", "code": "ko"},
                           {"lang": "Latvian", "code": "lv"},
                           {"lang": "Dutch", "code": "nl"},
                           {"lang": "Polish", "code": "pl"},
@@ -65,11 +65,12 @@ def db_lang_init(db):
                           {"lang": "Romanian", "code": "ro"},
                           {"lang": "Russian", "code": "ru"},
                           {"lang": "Slovak", "code": "sk"},
-                          {"lang": "Slovenian", "code": "sl"},
                           {"lang": "Swedish", "code": "sv"},
-                          {"lang": "Turkish", "code": "tr"},
+                          {"lang": "Tamil", "code": "ta"},
+                          {"lang": "Filipino", "code": "tl"},
                           {"lang": "Ukrainian", "code": "uk"},
-                          {"lang": "Chinese", "code": "zh-CN"},
+                          {"lang": "Vietnamese", "code": "vi"},
+                          {"lang": "Chinese (Simplified)", "code": "zh-CN"},
                           ])
 
 
