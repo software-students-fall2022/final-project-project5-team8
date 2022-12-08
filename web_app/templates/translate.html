@@ -66,7 +66,7 @@
           <h1 class="result-hd" id="readIt">Translation ({{ out }})</h1>
           <p class="result-txt">{{in_out}}</p>
           <audio controls class="trans-audio">
-            {% set text = in_out %} {% set lang = s %}
+            {% set text = in_out %} {% set lang = t %}
             <source src="{{ sayit(lang, text)}}" />
           </audio>
         </div>

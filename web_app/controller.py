@@ -73,9 +73,9 @@ def db_lang_init(db):
                           ])
 
 
-def db_text_add(db, input_text, out_lang, output_text):
+def db_text_add(db, input_text, out_lang, output_text, code):
     db.hist.insert_one(
-        {"input": input_text, "output_lang": out_lang, "output": output_text})
+        {"input": input_text, "output_lang": out_lang, "output": output_text, "output_code": code})
 
 
 # ****************** All Routes ******************************#
@@ -131,8 +131,8 @@ def translate():
         in_out = trans.trans(transcript, s, t)
     except:
         return render_template('translate.html', error=True)
-    db_text_add(db_text, transcript, out, in_out)
-    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, s=s)
+    db_text_add(db_text, transcript, out, in_out, t)
+    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, t=t)
 
 
 @app.route('/dashboard', methods=["GET"])
