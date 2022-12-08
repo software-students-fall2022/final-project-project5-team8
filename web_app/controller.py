@@ -161,5 +161,16 @@ def filter_history():
         return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
+# sort the history alphabetically
+@app.route('/dashboard/sort', methods=["GET", "POST"])
+def sort_history():
+    if request.method == "POST":
+        lang = get_db(0).langs.find({})
+        choice = request.form.get('sort')
+        translations = get_db(1).hist.find({}).sort(choice, 1)
+        count = get_db(1).hist.count_documents({})
+        return render_template('dashboard.html', translations=translations, count=count, lang=lang)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, threaded=True)

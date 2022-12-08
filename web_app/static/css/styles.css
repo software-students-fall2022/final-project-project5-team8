@@ -235,3 +235,10 @@ img {
 .reset-filter-btn:active {
   transform: translateY(2px);
 }
+
+.dashboard-functions {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: flex-end;
+}
