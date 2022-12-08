@@ -31,6 +31,23 @@ header {
   transform: translateY(2px);
 }
 
+#db-btn {
+  border: none;
+  padding: 0;
+  padding-top: 4px;
+}
+
+.db-img {
+  width: 50px;
+  margin: 0;
+}
+
+.trans-head-btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
 body {
   margin: 0;
   background-color: #FAFAFB;
@@ -64,6 +81,10 @@ button {
 
 button:active {
   transform: translateY(2px);
+}
+
+.input-group-addon {
+  margin-right: 8px;
 }
 
 #translate-btn {
@@ -138,12 +159,27 @@ th {
   background-color: #728BF6;
   color: #FAFAFB;
   width: 500px;
+  margin: 0;
+}
+
+.mid-th {
+  border-top: 1px solid black;
+  border-left: none;
+  border-right: none;
+}
+
+.mid-td {
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 td {
   padding: 10px;
   border: 1px solid black;
+  border-top: none;
   text-align: center;
+  margin: 0;
 }
 
 .del-btn {
@@ -165,3 +201,67 @@ img {
   margin-right: 30px;
 }
 
+.result {
+  display: flex;
+}
+
+.stt {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+  padding: 20px;
+  width: 500px;
+  text-overflow: wrap;
+}
+
+.result-hd {
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+}
+
+.result-txt {
+  margin: 0;
+}
+
+#arrow { 
+  width: 200px;
+  height: auto;
+  margin: 0 20px;
+}
+
+.dashboard-pg {
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+#apply-btn {
+  background-color: #75D4B8;
+  margin-left: 20px;
+}
+
+.reset-filter-btn {
+  border-radius: 15px;
+  background-color: #E88675;
+  border: 2px solid black;
+  padding: 15px;
+  font-size: large;
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+}
+
+.reset-filter-btn:active {
+  transform: translateY(2px);
+}
+
+.dashboard-functions {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.filter-dd {
+  margin-right: 20px;
+}

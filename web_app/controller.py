@@ -1,54 +1,44 @@
-from flask import Flask, jsonify, render_template, request, redirect
-from werkzeug.utils import secure_filename
-from unicodedata import name
+from flask import Flask, render_template, request
 from dotenv import dotenv_values
-from pymongo import MongoClient
-from bson.objectid import ObjectId
 from flask_bootstrap import Bootstrap
+from flask_gtts import gtts
 import speech_recognition as sr
-import sys
 import os
 import flask
 import trans
-import importlib
-import itertools
 import pymongo
-import datetime
-import sys
 
-#import speech_recognition as sr
-
-recorded = False
 
 # instantiate the app
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://db:27017/'
 bootstrap = Bootstrap(app)
-# cxn = pymongo.MongoClient(host='db')
+gtts(app)
 
 
 def get_db(num):
     # load_dotenv('.env')
     config = dotenv_values(".env")
-    # cxn = MongoClient(host='db', port=27017)
-    cxn = pymongo.MongoClient(os.getenv('MONGO_URI'), serverSelectionTimeoutMS=5000)
+    cxn = pymongo.MongoClient(os.getenv('MONGO_URI'),
+                              serverSelectionTimeoutMS=5000)
     db = ""
     if num == 0:
-                # store a reference to the database
-                db = cxn["language"]
+        # store a reference to the database
+        db = cxn["language"]
     else:
-                db = cxn["text"]
+        db = cxn["text"]
     try:
-            # verify the connection works by pinging the database
-            # The ping command is cheap and does not require auth.
-            cxn.admin.command('ping')
-            # if we get here, the connection worked!
-            print(' *', 'Connected to MongoDB!')
+        # verify the connection works by pinging the database
+        # The ping command is cheap and does not require auth.
+        cxn.admin.command('ping')
+        # if we get here, the connection worked!
+        print(' *', 'Connected to MongoDB!')
     except Exception as e:
-            # the ping command failed, so the connection is not available.
-            # render_template('error.html', error=e) # render the edit template
-            print(' *', "Failed to connect to MongoDB at", 'mongodb://mongodb:27017/')
-            print('Database connection error:', e)  # debug
+        # the ping command failed, so the connection is not available.
+        # render_template('error.html', error=e) # render the edit template
+        print(' *', "Failed to connect to MongoDB at",
+              'mongodb://mongodb:27017/')
+        print('Database connection error:', e)  # debug
     return db
 
 
@@ -91,20 +81,18 @@ def db_text_add(db, input_text, out_lang, output_text):
 # ****************** All Routes ******************************#
 
 # route for homepage
-# Takes in a audio file and display the transcript
+# Takes in a audio file and display the transcript of the audio file
 
 
 @app.route('/', methods=["GET", "POST"])
 def home():
     db = get_db(0)
-    db_text = get_db(1)
     # initalize the database with the languages that can be translated
     db_lang_init(db)
     # pass database in twice for both drop down menus
     # inp = db.langs.find({})
     out = db.langs.find({})
     if request.method == "POST":
-        recorded = True
         # get audio from app.js
         f = request.files['audio_data']
         # save audio to audio.wav file through flask server
@@ -123,8 +111,8 @@ def home():
     # pass database in to be read in home.html
     return render_template('home.html', out=out)
 
-# route for translating the recognized audio file input using machine learning
 
+# route for translating the recognized audio file input using machine learning
 @app.route('/translate', methods=["POST"])
 def translate():
     # get the options selected from input and output from home.html
@@ -144,14 +132,15 @@ def translate():
     except:
         return render_template('translate.html', error=True)
     db_text_add(db_text, transcript, out, in_out)
-    return render_template('translate.html', in_out=in_out, transcript=transcript)
+    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, s=s)
 
 
 @app.route('/dashboard', methods=["GET"])
 def dashboard_display():
+    lang = get_db(0).langs.find({})
     translations = get_db(1).hist.find({})
     count = get_db(1).hist.count_documents({})
-    return render_template('dashboard.html', translations=translations, count=count)
+    return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
 @app.route('/dashboard/delete', methods=["GET", "POST"])
@@ -159,5 +148,30 @@ def delete_history():
     get_db(1).hist.delete_many({})
     return render_template('dashboard.html')
 
+
+@app.route('/dashboard/sort_filter', methods=["GET", "POST"])
+def filter_sort_history():
+    if request.method == "POST":
+        lang = get_db(0).langs.find({})
+        sort = request.form.get('sort')
+        filter = request.form.get('filter')
+        if sort != "None" and filter != "None":
+            translations = get_db(1).hist.find(
+                {"output_lang": str(filter)}).sort(sort, 1)
+            count = get_db(1).hist.count_documents(
+                {"output_lang": str(filter)})
+        elif sort != "None" and filter == "None":
+            translations = get_db(1).hist.find({}).sort(sort, 1)
+            count = get_db(1).hist.count_documents({})
+        elif sort == "None" and filter != "None":
+            translations = get_db(1).hist.find({"output_lang": str(filter)})
+            count = get_db(1).hist.count_documents(
+                {"output_lang": str(filter)})
+        elif sort == "None" and filter == "None":
+            translations = get_db(1).hist.find({})
+            count = get_db(1).hist.count_documents({})
+        return render_template('dashboard.html', translations=translations, count=count, lang=lang)
+
+
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = 5000, threaded=True)
+    app.run(host="0.0.0.0", port=5000, threaded=True)

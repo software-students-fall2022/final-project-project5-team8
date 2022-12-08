@@ -18,7 +18,17 @@
         />
         <h1>Speech-to-text Translation</h1>
       </div>
-      <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+      <div class="trans-head-btn">
+        <a
+          href="{{ url_for('dashboard_display') }}"
+          class="header-btn"
+          id="db-btn"
+          ><img
+            class="db-img"
+            src="{{ url_for('static', filename='img/history.png') }}"
+        /></a>
+        <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+      </div>
     </header>
     {% if error %}
     <div class="error-body">
@@ -39,15 +49,24 @@
     {% else %}
     <main>
       <div class="result">
-        <div id="input-stt">
-          <h1>Most Recent Input</h1>
-          <p>{{transcript}}</p>
+        <div class="stt">
+          <h1 class="result-hd">Most Recent Input</h1>
+          <p class="result-txt">{{transcript}}</p>
         </div>
-        <div id="output-stt">
-          <h1>Translation</h1>
-          <p>{{in_out}}</p>
+        <img
+          src="{{ url_for('static', filename='img/arrow.png') }}"
+          alt="arrow symbol"
+          id="arrow"
+        />
+        <div class="stt">
+          <h1 class="result-hd" id="readIt">Translation ({{ out }})</h1>
+          <p class="result-txt">{{in_out}}</p>
         </div>
       </div>
+      <audio controls>
+        {% set text = in_out %} {% set lang = s %}
+        <source src="{{ sayit(lang, text)}}" />
+      </audio>
     </main>
     {% endif %}
   </body>
