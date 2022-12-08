@@ -225,9 +225,9 @@ img {
 }
 
 #arrow { 
-  width: 200px;
-  height: auto;
-  margin: 0 20px;
+  width: 150px;
+  height: 150px;
+  margin: 0;
 }
 
 .dashboard-pg {
@@ -264,4 +264,9 @@ img {
 
 .filter-dd {
   margin-right: 20px;
+}
+
+.trans-audio {
+  margin-top: 50px;
+  filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
 }

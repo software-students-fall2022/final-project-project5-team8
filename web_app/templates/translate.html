@@ -52,6 +52,10 @@
         <div class="stt">
           <h1 class="result-hd">Most Recent Input</h1>
           <p class="result-txt">{{transcript}}</p>
+          <audio controls class="trans-audio">
+            {% set text = transcript %} {% set lang = 'en' %}
+            <source src="{{ sayit(lang, text)}}" />
+          </audio>
         </div>
         <img
           src="{{ url_for('static', filename='img/arrow.png') }}"
@@ -61,12 +65,12 @@
         <div class="stt">
           <h1 class="result-hd" id="readIt">Translation ({{ out }})</h1>
           <p class="result-txt">{{in_out}}</p>
+          <audio controls class="trans-audio">
+            {% set text = in_out %} {% set lang = s %}
+            <source src="{{ sayit(lang, text)}}" />
+          </audio>
         </div>
       </div>
-      <audio controls>
-        {% set text = in_out %} {% set lang = s %}
-        <source src="{{ sayit(lang, text)}}" />
-      </audio>
     </main>
     {% endif %}
   </body>
