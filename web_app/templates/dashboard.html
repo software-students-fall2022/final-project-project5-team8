@@ -31,7 +31,7 @@
           <thead>
             <tr>
               <th>Original Text</th>
-              <th class="mid-t">Translated Text</th>
+              <th class="mid-th">Translated Text</th>
               <th>Language</th>
               {% for translation in translations %}
             </tr>
@@ -39,7 +39,7 @@
           <tbody>
             <tr>
               <td>{{ translation['input'] }}</td>
-              <td class="mid-t">{{ translation['output'] }}</td>
+              <td class="mid-td">{{ translation['output'] }}</td>
               <td>{{ translation['output_lang'] }}</td>
             </tr>
             {% endfor %}

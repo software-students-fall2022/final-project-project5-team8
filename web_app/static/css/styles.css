@@ -141,23 +141,28 @@ select {
 th {
   padding: 10px;
   border: 1px solid black;
-  border-bottom: none;
   background-color: #728BF6;
   color: #FAFAFB;
   width: 500px;
   margin: 0;
 }
 
-.mid-t {
+.mid-th {
   border-top: 1px solid black;
+  border-left: none;
+  border-right: none;
+}
+
+.mid-td {
+  border-top: none;
   border-left: none;
   border-right: none;
 }
 
 td {
   padding: 10px;
-  border-top: none;
   border: 1px solid black;
+  border-top: none;
   text-align: center;
   margin: 0;
 }
@@ -191,11 +196,14 @@ img {
   align-items: center;
   gap: 20px;
   padding: 20px;
+  width: 500px;
+  text-overflow: wrap;
 }
 
 #arrow { 
-  width: 190px;
+  max-width: 200px;
   height: auto;
+  width: auto;
   margin: 0 20px;
 }
 
