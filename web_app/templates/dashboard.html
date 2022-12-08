@@ -60,6 +60,7 @@
               <th>Original Text</th>
               <th class="mid-th">Translated Text</th>
               <th>Language</th>
+              <th>Audio</th>
               {% for translation in translations %}
             </tr>
           </thead>
@@ -68,6 +69,13 @@
               <td>{{ translation['input'] }}</td>
               <td class="mid-td">{{ translation['output'] }}</td>
               <td>{{ translation['output_lang'] }}</td>
+              <td>
+                <audio controls>
+                  {% set text = translation['output'] %} {% set lang =
+                  translation['output_code'] %}
+                  <source src="{{ sayit(lang, text)}}" />
+                </audio>
+              </td>
             </tr>
             {% endfor %}
           </tbody>

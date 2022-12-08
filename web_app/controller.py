@@ -57,7 +57,7 @@ def db_lang_init(db):
                           {"lang": "Hungarian", "code": "hu"},
                           {"lang": "Italian", "code": "it"},
                           {"lang": "Japanese", "code": "ja"},
-                          {"lang": "Lithuanian", "code": "lt"},
+                          {"lang": "Korean", "code": "ko"},
                           {"lang": "Latvian", "code": "lv"},
                           {"lang": "Dutch", "code": "nl"},
                           {"lang": "Polish", "code": "pl"},
@@ -65,17 +65,18 @@ def db_lang_init(db):
                           {"lang": "Romanian", "code": "ro"},
                           {"lang": "Russian", "code": "ru"},
                           {"lang": "Slovak", "code": "sk"},
-                          {"lang": "Slovenian", "code": "sl"},
                           {"lang": "Swedish", "code": "sv"},
-                          {"lang": "Turkish", "code": "tr"},
+                          {"lang": "Tamil", "code": "ta"},
+                          {"lang": "Filipino", "code": "tl"},
                           {"lang": "Ukrainian", "code": "uk"},
-                          {"lang": "Chinese", "code": "zh-CN"},
+                          {"lang": "Vietnamese", "code": "vi"},
+                          {"lang": "Chinese (Simplified)", "code": "zh-CN"},
                           ])
 
 
-def db_text_add(db, input_text, out_lang, output_text):
+def db_text_add(db, input_text, out_lang, output_text, code):
     db.hist.insert_one(
-        {"input": input_text, "output_lang": out_lang, "output": output_text})
+        {"input": input_text, "output_lang": out_lang, "output": output_text, "output_code": code})
 
 
 # ****************** All Routes ******************************#
@@ -131,8 +132,8 @@ def translate():
         in_out = trans.trans(transcript, s, t)
     except:
         return render_template('translate.html', error=True)
-    db_text_add(db_text, transcript, out, in_out)
-    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, s=s)
+    db_text_add(db_text, transcript, out, in_out, t)
+    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, t=t)
 
 
 @app.route('/dashboard', methods=["GET"])
