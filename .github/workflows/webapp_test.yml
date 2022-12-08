@@ -38,7 +38,7 @@ jobs:
           python -m pip install --upgrade flask
           python -m pip install --upgrade Flask-Bootstrap
           python -m pip install --upgrade Flask-Session
-          ython -m pip install --upgrade gTTS
+          python -m pip install --upgrade gTTS
           python -m pip install --upgrade Flask-gTTS
           python -m pip install --upgrade Werkzeug
           python -m pip install --upgrade python-dotenv
