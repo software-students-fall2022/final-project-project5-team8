@@ -59,10 +59,14 @@
           id="arrow"
         />
         <div class="stt">
-          <h1 class="result-hd">Translation ({{ out }})</h1>
+          <h1 class="result-hd" id="readIt">Translation ({{ out }})</h1>
           <p class="result-txt">{{in_out}}</p>
         </div>
       </div>
+      <audio controls>
+        {% set text = in_out %} {% set lang = s %}
+        <source src="{{ sayit(lang, text)}}" />
+      </audio>
     </main>
     {% endif %}
   </body>

@@ -38,6 +38,8 @@ jobs:
           python -m pip install --upgrade flask
           python -m pip install --upgrade Flask-Bootstrap
           python -m pip install --upgrade Flask-Session
+          python -m pip install --upgrade gTTS
+          python -m pip install --upgrade Flask-gTTS
           python -m pip install --upgrade Werkzeug
           python -m pip install --upgrade python-dotenv
           sudo apt-get install portaudio19-dev

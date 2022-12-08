@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from dotenv import dotenv_values
 from flask_bootstrap import Bootstrap
+from flask_gtts import gtts
 import speech_recognition as sr
 import os
 import flask
@@ -12,7 +13,7 @@ import pymongo
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://db:27017/'
 bootstrap = Bootstrap(app)
-# cxn = pymongo.MongoClient(host='db')
+gtts(app)
 
 
 def get_db(num):
@@ -81,6 +82,8 @@ def db_text_add(db, input_text, out_lang, output_text):
 
 # route for homepage
 # Takes in a audio file and display the transcript of the audio file
+
+
 @app.route('/', methods=["GET", "POST"])
 def home():
     db = get_db(0)
@@ -129,7 +132,7 @@ def translate():
     except:
         return render_template('translate.html', error=True)
     db_text_add(db_text, transcript, out, in_out)
-    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out)
+    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, s=s)
 
 
 @app.route('/dashboard', methods=["GET"])
