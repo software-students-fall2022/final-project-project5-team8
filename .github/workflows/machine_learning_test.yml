@@ -5,7 +5,6 @@ name: Machine Learning client
 
 on:
   push:
-  - project4
     branches-ignore: ["feedback"]
   pull_request:
     branches-ignore: ["feedback"]
