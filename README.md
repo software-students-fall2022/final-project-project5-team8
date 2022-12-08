@@ -83,8 +83,9 @@ Under root for the project, create `.env` file with content:
 ```env
 FLASK_DEBUG = development
 
-MONGO_URI = mongodb://localhost:27017/
-MONGO_DBNAME = language
+MONGO_URI = mongodb://db:27017/?authSource=admin
+MONGO_LANG_DBNAME = language
+MONGO_TEXT_DBNAME = text
 MONGO_USER = admin
 MONGO_PASS = 123456
 ```

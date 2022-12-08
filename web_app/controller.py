@@ -1,9 +1,5 @@
 from flask import Flask, render_template, request
-from werkzeug.utils import secure_filename
-from unicodedata import name
 from dotenv import dotenv_values
-from pymongo import MongoClient
-from bson.objectid import ObjectId
 from flask_bootstrap import Bootstrap
 import speech_recognition as sr
 import os
@@ -150,25 +146,27 @@ def delete_history():
     return render_template('dashboard.html')
 
 
-# filter the history by language
-@app.route('/dashboard/filter', methods=["GET", "POST"])
-def filter_history():
+@app.route('/dashboard/sort_filter', methods=["GET", "POST"])
+def filter_sort_history():
     if request.method == "POST":
         lang = get_db(0).langs.find({})
+        sort = request.form.get('sort')
         filter = request.form.get('filter')
-        translations = get_db(1).hist.find({"output_lang": str(filter)})
-        count = get_db(1).hist.count_documents({"output_lang": str(filter)})
-        return render_template('dashboard.html', translations=translations, count=count, lang=lang)
-
-
-# sort the history alphabetically
-@app.route('/dashboard/sort', methods=["GET", "POST"])
-def sort_history():
-    if request.method == "POST":
-        lang = get_db(0).langs.find({})
-        choice = request.form.get('sort')
-        translations = get_db(1).hist.find({}).sort(choice, 1)
-        count = get_db(1).hist.count_documents({})
+        if sort != "None" and filter != "None":
+            translations = get_db(1).hist.find(
+                {"output_lang": str(filter)}).sort(sort, 1)
+            count = get_db(1).hist.count_documents(
+                {"output_lang": str(filter)})
+        elif sort != "None" and filter == "None":
+            translations = get_db(1).hist.find({}).sort(sort, 1)
+            count = get_db(1).hist.count_documents({})
+        elif sort == "None" and filter != "None":
+            translations = get_db(1).hist.find({"output_lang": str(filter)})
+            count = get_db(1).hist.count_documents(
+                {"output_lang": str(filter)})
+        elif sort == "None" and filter == "None":
+            translations = get_db(1).hist.find({})
+            count = get_db(1).hist.count_documents({})
         return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 

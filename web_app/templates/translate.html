@@ -19,7 +19,14 @@
         <h1>Speech-to-text Translation</h1>
       </div>
       <div class="trans-head-btn">
-        <a href="{{ url_for('dashboard_display') }}" class="header-btn">DB</a>
+        <a
+          href="{{ url_for('dashboard_display') }}"
+          class="header-btn"
+          id="db-btn"
+          ><img
+            class="db-img"
+            src="{{ url_for('static', filename='img/history.png') }}"
+        /></a>
         <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
       </div>
     </header>
@@ -43,8 +50,8 @@
     <main>
       <div class="result">
         <div class="stt">
-          <h1>Most Recent Input</h1>
-          <p>{{transcript}}</p>
+          <h1 class="result-hd">Most Recent Input</h1>
+          <p class="result-txt">{{transcript}}</p>
         </div>
         <img
           src="{{ url_for('static', filename='img/arrow.png') }}"
@@ -52,8 +59,8 @@
           id="arrow"
         />
         <div class="stt">
-          <h1>Translation ({{ out }})</h1>
-          <p>{{in_out}}</p>
+          <h1 class="result-hd">Translation ({{ out }})</h1>
+          <p class="result-txt">{{in_out}}</p>
         </div>
       </div>
     </main>
