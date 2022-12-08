@@ -18,7 +18,10 @@
         />
         <h1>Speech-to-text Translation</h1>
       </div>
-      <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+      <div class="trans-head-btn">
+        <a href="{{ url_for('dashboard_display') }}" class="header-btn">DB</a>
+        <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+      </div>
     </header>
     {% if error %}
     <div class="error-body">
@@ -39,12 +42,17 @@
     {% else %}
     <main>
       <div class="result">
-        <div id="input-stt">
+        <div class="stt">
           <h1>Most Recent Input</h1>
           <p>{{transcript}}</p>
         </div>
-        <div id="output-stt">
-          <h1>Translation</h1>
+        <img
+          src="{{ url_for('static', filename='img/arrow.png') }}"
+          alt="arrow symbol"
+          id="arrow"
+        />
+        <div class="stt">
+          <h1>Translation ({{ out }})</h1>
           <p>{{in_out}}</p>
         </div>
       </div>
