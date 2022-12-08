@@ -72,6 +72,10 @@ button:active {
   transform: translateY(2px);
 }
 
+.input-group-addon {
+  margin-right: 8px;
+}
+
 #translate-btn {
   background-color: #75D4B8;
 }
@@ -209,4 +213,25 @@ img {
 
 .dashboard-pg {
   border-collapse: collapse;
+  margin-top: 30px;
+}
+
+#apply-btn {
+  background-color: #75D4B8;
+  margin-left: 20px;
+}
+
+.reset-filter-btn {
+  border-radius: 15px;
+  background-color: #E88675;
+  border: 2px solid black;
+  padding: 15px;
+  font-size: large;
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+}
+
+.reset-filter-btn:active {
+  transform: translateY(2px);
 }

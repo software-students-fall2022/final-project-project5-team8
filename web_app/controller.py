@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, redirect
+from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from unicodedata import name
 from dotenv import dotenv_values
@@ -6,15 +6,10 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_bootstrap import Bootstrap
 import speech_recognition as sr
-import sys
 import os
 import flask
 import trans
-import importlib
-import itertools
 import pymongo
-import datetime
-import sys
 
 
 # instantiate the app
@@ -27,7 +22,6 @@ bootstrap = Bootstrap(app)
 def get_db(num):
     # load_dotenv('.env')
     config = dotenv_values(".env")
-    # cxn = MongoClient(host='db', port=27017)
     cxn = pymongo.MongoClient(os.getenv('MONGO_URI'),
                               serverSelectionTimeoutMS=5000)
     db = ""
@@ -144,15 +138,27 @@ def translate():
 
 @app.route('/dashboard', methods=["GET"])
 def dashboard_display():
+    lang = get_db(0).langs.find({})
     translations = get_db(1).hist.find({})
     count = get_db(1).hist.count_documents({})
-    return render_template('dashboard.html', translations=translations, count=count)
+    return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
 @app.route('/dashboard/delete', methods=["GET", "POST"])
 def delete_history():
     get_db(1).hist.delete_many({})
     return render_template('dashboard.html')
+
+
+# filter the history by language
+@app.route('/dashboard/filter', methods=["GET", "POST"])
+def filter_history():
+    if request.method == "POST":
+        lang = get_db(0).langs.find({})
+        filter = request.form.get('filter')
+        translations = get_db(1).hist.find({"output_lang": str(filter)})
+        count = get_db(1).hist.count_documents({"output_lang": str(filter)})
+        return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
 if __name__ == "__main__":
