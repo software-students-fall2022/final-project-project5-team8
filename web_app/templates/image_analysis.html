@@ -41,7 +41,13 @@
         </div>
         <button id="upload-img-btn" class="btn" type="submit">Upload</button>
       </form>
-      {% if transcript %}
+      {% if error %}
+      <div class="error-body">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          The file you upload can't be recognized. Please try again.
+        </div>
+      </div>
+      {% endif %} {% if transcript %}
       <div class="uploaded-img-wrapper">
         <p><b>Text:</b> {{ transcript }}</p>
       </div>

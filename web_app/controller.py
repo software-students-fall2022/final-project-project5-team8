@@ -117,6 +117,7 @@ def filter_sort_history():
         return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
+# --------------------- Image Analysis -----------------------#
 @app.route('/upload_image', methods=["GET"])
 def upload_image_page():
     return render_template('image_analysis.html')
@@ -133,7 +134,7 @@ def upload():
         f.save(f.filename)
         global transcript
         transcript = pytesseract.image_to_string("user_image.jpg")
-        return render_template('image_analysis.html', transcript=transcript, out=lang)
+        return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
 
 
 if __name__ == "__main__":
