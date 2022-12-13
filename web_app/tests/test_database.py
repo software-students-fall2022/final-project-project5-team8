@@ -28,6 +28,7 @@ class Test_Web_App(unittest.TestCase):
         response = self.client.get('/', follow_redirects=True)
         db = get_db(0)
         db_text = get_db(1)
+        assert response.status_code==200
         assert db.command("buildinfo")
         assert db_text.command("buildinfo")
 
