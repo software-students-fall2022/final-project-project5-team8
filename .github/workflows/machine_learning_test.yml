@@ -41,7 +41,7 @@ jobs:
           python -m pip install --upgrade gTTS
           python -m pip install --upgrade Flask-gTTS
           python -m pip install --upgrade pytesseract
-          python -m pip install --upgrade pillows
+          python -m pip install --upgrade Pillow
           python -m pip install --upgrade Werkzeug
           python -m pip install --upgrade python-dotenv
           sudo apt-get install libleptonica-dev tesseract-ocr libtesseract-dev python3-pil tesseract-ocr-eng tesseract-ocr-script-latn
