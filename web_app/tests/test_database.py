@@ -1,6 +1,7 @@
 import unittest
 from flask import current_app
-from controller import app, get_db
+from controller import app
+from database import get_db
 
 
 
