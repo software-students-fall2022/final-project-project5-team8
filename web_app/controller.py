@@ -3,6 +3,8 @@ from dotenv import dotenv_values
 from flask_bootstrap import Bootstrap
 from flask_gtts import gtts
 import speech_recognition as sr
+from PIL import Image
+from pytesseract import pytesseract
 import os
 import flask
 import trans
@@ -146,8 +148,9 @@ def dashboard_display():
 
 @app.route('/dashboard/delete', methods=["GET", "POST"])
 def delete_history():
+    lang = get_db(0).langs.find({})
     get_db(1).hist.delete_many({})
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', lang=lang)
 
 
 @app.route('/dashboard/sort_filter', methods=["GET", "POST"])
@@ -172,6 +175,25 @@ def filter_sort_history():
             translations = get_db(1).hist.find({})
             count = get_db(1).hist.count_documents({})
         return render_template('dashboard.html', translations=translations, count=count, lang=lang)
+
+
+@app.route('/upload_image', methods=["GET"])
+def upload_image_page():
+    return render_template('image_analysis.html')
+
+
+@app.route('/upload_image', methods=["GET", "POST"])
+def upload():
+    if request.method == "POST":
+        f = request.files['image']
+        if f.filename == "":
+            return render_template('image_analysis.html', error=True)
+        lang = get_db(0).langs.find({})
+        f.filename = "user_image.jpg"
+        f.save(f.filename)
+        global transcript
+        transcript = pytesseract.image_to_string("user_image.jpg")
+        return render_template('image_analysis.html', transcript=transcript, out=lang)
 
 
 if __name__ == "__main__":
