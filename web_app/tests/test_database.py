@@ -26,11 +26,13 @@ class Test_Web_App(unittest.TestCase):
     def test_db_connect(self):
         self.setUp()
         response = self.client.get('/', follow_redirects=True)
-        db = get_db(0)
-        db_text = get_db(1)
+        db_client, db = get_db(0)
+        db_text_client, db_text = get_db(1)
         assert response.status_code==200
         assert db.command("buildinfo")
         assert db_text.command("buildinfo")
+        assert db_client.server_info()
+        assert db_text_client.server_info()
 
 
     def test_db_collection(self):

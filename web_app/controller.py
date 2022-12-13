@@ -39,7 +39,7 @@ def get_db(num):
         print(' *', "Failed to connect to MongoDB at",
               'mongodb://mongodb:27017/')
         print('Database connection error:', e)  # debug
-    return db
+    return cxn, db
 
 
 def db_lang_init(db):
@@ -87,7 +87,7 @@ def db_text_add(db, input_text, out_lang, output_text, code):
 
 @app.route('/', methods=["GET", "POST"])
 def home():
-    db = get_db(0)
+    cxn,db = get_db(0)
     # initalize the database with the languages that can be translated
     db_lang_init(db)
     # pass database in twice for both drop down menus
@@ -119,8 +119,8 @@ def translate():
     # get the options selected from input and output from home.html
     inp = "English"
     out = request.form.get('output')
-    db = get_db(0)
-    db_text = get_db(1)
+    cxn,db = get_db(0)
+    cxn1, db_text = get_db(1)
     # using the languages chosen by the user locate their doc in the database
     src = db.langs.find_one({"lang": inp})
     targ = db.langs.find_one({"lang": str(out)})
