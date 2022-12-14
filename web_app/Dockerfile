@@ -11,6 +11,7 @@ ADD . /web_app
 RUN pip install --upgrade pip
 RUN apt -y update
 RUN apt-get install -y portaudio19-dev
+RUN apt-get install -y libleptonica-dev tesseract-ocr libtesseract-dev python3-pil tesseract-ocr-eng tesseract-ocr-script-latn
 RUN apt-get install -y flac
 RUN pip install -r requirements.txt
 
