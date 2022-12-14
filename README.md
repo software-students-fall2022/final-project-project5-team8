@@ -22,11 +22,11 @@ Build a containerized app that uses machine learning. See [instructions](./instr
 
 ## Local mongodb database set up within Docker
 
-### 1, Docker Desktop
+### 1. Docker Desktop
 
 Make sure Docker Desktop is installed, if not check [here](https://www.docker.com/products/docker-desktop/).
 
-### 2, Mongo image
+### 2. Mongo image
 
 Pull the mongo image by running the following command in terminal
 
@@ -34,7 +34,7 @@ Pull the mongo image by running the following command in terminal
 docker pull mongo
 ```
 
-### 3, Run container
+### 3. Run container
 
 Once installed, run the mongo container with the following command:
 
@@ -42,7 +42,7 @@ Once installed, run the mongo container with the following command:
 docker run -itd --name mongo -p 27017:27017 mongo --auth
 ```
 
-### 4, Set up admin
+### 4. Set up admin
 
 We can either connect to to mongo by opening the terminal inside Docker Desktop or run the following command in terminal:
 
@@ -93,15 +93,41 @@ MONGO_PASS = 123456
 ## Required dependencies
 
 ```python
-pip install deep_translator
-pip install SpeechRecognition
-pip install pyttsx3
-pip install pyaudio
-pip install flask
-pip install pymongo
+beautifulsoup4==4.11.1
+certifi==2022.9.24
+charset-normalizer==2.1.1
+click==8.1.3
+colorama==0.4.6
+comtypes==1.1.14
+deep-translator==1.9.1
+dnspython==2.2.1
+dominate==2.7.0
+Flask==2.2.2
+Flask-Bootstrap==3.3.7.1
+idna==3.4
+install==1.3.5
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+PyAudio==0.2.12
+pymongo==3.8.0
+python-dotenv==0.21.0
+pyttsx3==2.90
+requests==2.28.1
+soupsieve==2.3.2.post1
+SpeechRecognition==3.8.1
+urllib3==1.26.13
+visitor==0.1.3
+Werkzeug==2.2.2
+gTTS==2.3.0
+Flask-gTTS==0.18
+pillow == 9.3.0
+pytesseract == 0.3.10
 ```
 
 ## Usage Instructions
+
+### <ins>AUDIO TRANSLATION</ins>
 
 RECORD a voice message in English
 
@@ -114,6 +140,16 @@ UPLOAD or SAVE the voice message
 - Upload button: Upload the voice message to the database
 
 - Save button: Save the voice message to the local machine
+
+CHOOSE a language to translate the recording to
+
+- Select a language from the dropdown menu
+
+TRANSLATE the recording by clicking the translate button
+
+### <ins>IMAGE-TO-TEXT TRANSLATION</ins>
+
+UPLOAD an image file (png, jpg, webp) with English text to be translated
 
 CHOOSE a language to translate the recording to
 
@@ -142,7 +178,7 @@ TRANSLATE the recording by clicking the translate button
 - Hungarian
 - Italian
 - Japanese
-- Lithuania
+- Korean
 - Latvian
 - Dutch
 - Polish
@@ -151,9 +187,12 @@ TRANSLATE the recording by clicking the translate button
 - Russian
 - Slovak
 - Swedish
-- Turkish
+- Tamil
+- Filipino
 - Ukrainian
-- Chinese
+- Vietnamese
+- Ukrainian
+- Chinese (Simplified)
 
 ## Contributors
 
@@ -166,5 +205,9 @@ TRANSLATE the recording by clicking the translate button
 [Leo Xu](https://github.com/leo6016)
 
 [Hillary Davis](https://github.com/hillarydavis1)
+
+[Michelle Lu]()
+
+## Legacy Code Contributor
 
 [Kedan Zha](https://github.com/Zackdan0227)
