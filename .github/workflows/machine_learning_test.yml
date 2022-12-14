@@ -63,3 +63,4 @@ jobs:
       - name: Test with pytest
         run: |
           pytest machine-learning-client/tests/test_machine_learning.py
+          pytest machine-learning-client/tests/test_img_translation.py
