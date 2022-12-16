@@ -27,6 +27,7 @@ def convo(sent, valid, inp):
     #api.close()  # close the session
     #api.reset_conversation() # reset the conversation
     api.refresh_auth()
+    #return the chatGPT response message
     return resp['message']  
 
 convo("hola como estan", True, "English")
