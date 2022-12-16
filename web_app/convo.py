@@ -11,6 +11,7 @@ def convo(sent, valid, inp):
     #check to see if user wants to continue convo
     if not valid:
         api.close()  # close the session
+    #BELOW ARE ADDITIONAL WAYS CHATGPT CAN BE ACCESSED
     #api2 = ChatGPT(session_token, proxy='http://proxy.example.com:8080')  # specify proxy
     #api3 = ChatGPT(auth_type='google', email='example@gmail.com', password='password') # auth with google login
     #api4 = ChatGPT(session_token, verbose=True)  # verbose mode (print debug messages)
