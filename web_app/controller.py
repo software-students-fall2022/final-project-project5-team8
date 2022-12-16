@@ -3,8 +3,6 @@ from dotenv import dotenv_values
 # from flask_bootstrap import Bootstrap
 from flask_gtts import gtts
 import speech_recognition as sr
-from PIL import Image
-from pytesseract import pytesseract
 import database
 from PIL import Image
 from pytesseract import pytesseract
