@@ -44,6 +44,7 @@ jobs:
           python -m pip install --upgrade Pillow
           python -m pip install --upgrade Werkzeug
           python -m pip install --upgrade python-dotenv
+          python -m pip install --upgrade pytest-cov
           sudo apt-get install libleptonica-dev tesseract-ocr libtesseract-dev python3-pil tesseract-ocr-eng tesseract-ocr-script-latn
           sudo apt-get install portaudio19-dev
           sudo apt-get install flac
