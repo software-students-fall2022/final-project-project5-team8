@@ -1,7 +1,7 @@
 import unittest
 from flask import current_app
 from controller import app
-from database import get_db
+from database import get_db, db_text_add
 
 
 
@@ -35,14 +35,12 @@ class Test_Web_App(unittest.TestCase):
 
     def test_db_collection(self):
         self.setUp()
-        response = self.client.get('/', follow_redirects=True)
         db_lang = get_db(0)
         assert db_lang.list_collection_names() == ["langs"]
 
 
     def test_db_languages(self):
         self.setUp()
-        response = self.client.get('/', follow_redirects=True)
         db = get_db(0)
         assert db.langs.find({"lang": "Bulgarian", "code": "bg"})
         assert db.langs.find({"lang": "Czech", "code": "cs"})
@@ -72,3 +70,8 @@ class Test_Web_App(unittest.TestCase):
         assert db.langs.find({"lang": "Japanese", "code": "ja"})
         assert db.langs.find({"lang": "Chinese", "code": "zh-CN"})
 
+    def test_db_test_add(self):
+        self.setUp()
+        db_text = get_db(1)
+        db_text_add(db_text, "hello", "en", "你好", "zh-CN")
+        assert db_text.hist.find({"input": "hello", "output_lang": "Chinese", "output": "你好"})
