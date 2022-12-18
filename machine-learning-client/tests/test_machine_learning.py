@@ -4,7 +4,6 @@ import translate
 
 
 class Tests:
-
     def test_speech_recognition(self):
         """
         Test accuracy of speech recognition tool with sample audio file.
@@ -32,8 +31,7 @@ class Tests:
         else:
             actual = False
         assert actual == expected, "Expected stop command to be recognized!"
-        
-        
+
     def test_translate(self):
         """
         Test that translate() in translate.py returns the correct translated text
@@ -50,11 +48,6 @@ class Tests:
         exp2 = "Le renard brun rapide saute par-dessus le chien paresseux."
         exp3 = "Der schnelle braune Fuchs springt über den faulen Hund."
 
-        assert lang1 == exp1_1 or lang1== exp1_2, "Expected Spanish translation to be correct!"
+        assert lang1 == exp1_1 or lang1 == exp1_2, "Expected Spanish translation to be correct!"
         assert lang2 == exp2, "Expected French translation to be correct!"
         assert lang3 == exp3, "Expected German translation to be correct!"
-
-
-
-    
-        
