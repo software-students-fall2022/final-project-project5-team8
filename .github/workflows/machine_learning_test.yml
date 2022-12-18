@@ -44,6 +44,7 @@ jobs:
           python -m pip install --upgrade Pillow
           python -m pip install --upgrade Werkzeug
           python -m pip install --upgrade python-dotenv
+          python -m pip install --upgrade pytest-cov
           sudo apt-get install libleptonica-dev tesseract-ocr libtesseract-dev python3-pil tesseract-ocr-eng tesseract-ocr-script-latn
           sudo apt-get install portaudio19-dev
           sudo apt-get install flac
@@ -62,5 +63,5 @@ jobs:
         uses: supercharge/mongodb-github-action@1.8.0
       - name: Test with pytest
         run: |
-          pytest machine-learning-client/tests/test_machine_learning.py
-          pytest machine-learning-client/tests/test_img_translation.py
+          pytest machine-learning-client/tests/test_machine_learning.py --cov
+          pytest machine-learning-client/tests/test_img_translation.py --cov
