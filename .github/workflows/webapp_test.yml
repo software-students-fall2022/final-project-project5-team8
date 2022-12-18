@@ -87,7 +87,7 @@ jobs:
         with:
           context: ./web_app
           push: true
-          tags: robertchenyf/software-engineer-final-team1-wordcloud:web-latest
+          tags: hihillary/final-project-project5-team8-app
   deploy:
     runs-on: ubuntu-latest
     needs: dockhub_push
