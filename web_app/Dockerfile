@@ -6,7 +6,6 @@ WORKDIR /web_app
 
 # copy current dir contents into image dir
 ADD . /web_app
-ADD .. /database
 
 #install requirments
 RUN pip install --upgrade pip
