@@ -24,10 +24,11 @@ class Tests:
         lang3 = translate.translate(input, "en", "de")
 
         exp1 = "El veloz zorro marrón salta sobre el perro perezoso."
+        exp1_1 = "El rápido zorro marrón salta sobre el perro perezoso."
         exp2 = "Le renard brun rapide saute par-dessus le chien paresseux."
         exp3 = "Der schnelle braune Fuchs springt über den faulen Hund."
 
-        assert lang1 == exp1, "Expected Spanish translation to be correct!"
+        assert lang1 == (exp1 or exp1_1), "Expected Spanish translation to be correct!"
         assert lang2 == exp2, "Expected French translation to be correct!"
         assert lang3 == exp3, "Expected German translation to be correct!"
 
