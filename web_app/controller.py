@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from dotenv import dotenv_values
-# from flask_bootstrap import Bootstrap
 from flask_gtts import gtts
 import speech_recognition as sr
 import database
@@ -16,6 +15,7 @@ import pymongo
 app = Flask(__name__)
 app.config['MONGO_URI'] = database.get_connection_str
 gtts(app)
+
 
 
 # ****************** All Routes ******************************#
