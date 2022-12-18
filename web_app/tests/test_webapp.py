@@ -1,6 +1,8 @@
 import unittest
 import trans
 import speech_recognition as sr
+from PIL import Image
+from pytesseract import pytesseract
 from flask import current_app
 from controller import app
 from database import get_db
@@ -72,7 +74,7 @@ class Test_Web_App(unittest.TestCase):
 
     def test_post_translate(self):
         self.setUp()
-        f=open("test.wav","rb")
+        f=open("web_app/tests/test.wav","rb")
         db = get_db(0)
         entries = db.langs.find({})
         self.client.post('/',data={"audio_data":f},follow_redirects=True)
@@ -81,4 +83,30 @@ class Test_Web_App(unittest.TestCase):
             text=response.get_data(as_text=True)
             out_text = trans.trans("hello", "en", cur["code"])
             assert out_text in text
+
+    def test_post_sort_filter(self):
+        self.setUp()
+        db = get_db(0)
+        entries = db.langs.find({})
+        for cur in entries:
+            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"None"},follow_redirects=True)
+            assert response.status_code==200
+            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"Output language"},follow_redirects=True)
+            assert response.status_code==200
+            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"Input text"},follow_redirects=True)
+            assert response.status_code==200
+
+    def test_upload_image_get(self):
+        self.setUp()
+        reponse=self.client.get('/upload_image')
+        assert reponse.status_code==200
+
+    def test_upload_image_post(self):
+        self.setUp()
+        f=open("web_app/tests/test.png","rb")
+        img = Image.open("web_app/tests/test.png")
+        text = pytesseract.image_to_string(img)
+        response=self.client.post('/upload_image',data={"image":f},follow_redirects=True)
+        test = response.get_data(as_text=True)
+        assert text in test 
 

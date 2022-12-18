@@ -25,8 +25,7 @@ def get_db(num):
     except Exception as e:
         # the ping command failed, so the connection is not available.
         # render_template('error.html', error=e) # render the edit template
-        print(' *', "Failed to connect to MongoDB at",
-              'mongodb://mongodb:27017/')
+        print(' *', "Failed to connect to MongoDB at",'mongodb://mongodb:27017/')
         print('Database connection error:', e)  # debug
     return db
 

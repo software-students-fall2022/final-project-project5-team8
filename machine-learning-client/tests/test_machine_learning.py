@@ -1,17 +1,9 @@
 import unittest
 import speech_recognition as sr
 import translate
-import speech_recog as sp
 
 
 class Tests:
-    def sanity_check(self):
-        """
-        Test system sanity to ensure logic is properly implemented.
-        """
-        expected = True
-        actual = True
-        assert actual == expected, "Expected True to be equal to True!"
 
     def test_speech_recognition(self):
         """

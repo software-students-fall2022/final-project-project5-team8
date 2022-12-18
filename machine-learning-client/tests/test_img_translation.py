@@ -4,13 +4,6 @@ import translate
 
 
 class Tests:
-    def sanity_check(self):
-        """
-        Test system sanity to ensure logic is properly implemented.
-        """
-        expected = True
-        actual = True
-        assert actual == expected, "Expected True to be equal to True!"
 
     def test_translate(self):
         """
