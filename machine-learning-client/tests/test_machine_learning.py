@@ -58,7 +58,7 @@ class Tests:
         exp2 = "Le renard brun rapide saute par-dessus le chien paresseux."
         exp3 = "Der schnelle braune Fuchs springt über den faulen Hund."
 
-        assert lang1 == (exp1_1 or exp1_2), "Expected Spanish translation to be correct!"
+        assert lang1 == exp1_1 or lang1== exp1_2, "Expected Spanish translation to be correct!"
         assert lang2 == exp2, "Expected French translation to be correct!"
         assert lang3 == exp3, "Expected German translation to be correct!"
 
