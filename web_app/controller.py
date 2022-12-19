@@ -99,7 +99,7 @@ def delete_history():
     return render_template('dashboard.html', lang=lang)
 
 
-@app.route('/dashboard/sort_filter', methods=["GET", "POST"])
+@app.route('/sort', methods=["GET", "POST"])
 def filter_sort_history():
     if request.method == "POST":
         lang = database.get_db(0).langs.find({})
@@ -141,7 +141,11 @@ def upload():
         f.save(f.filename)
         global transcript
         transcript = pytesseract.image_to_string("user_image.jpg")
-        return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
+        try:
+            temp = trans.trans(transcript, "en", "cs")
+            return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
+        except:
+            return render_template('image_analysis.html', transcript=False, error=True)
 
 
 if __name__ == "__main__":
