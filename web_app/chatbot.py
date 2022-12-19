@@ -4,7 +4,7 @@ import openai
 
 def get_response(message,targ):
   openai.organization = "org-rWTLFGFyhzJxj2FXuNujO39c"
-  openai.api_key = "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"
+  openai.api_key = os.environ.get("OPENAI_API_KEY")
   prompt="The following is a conversation in "+targ+" between two people. Respond in the according language.\n\nPerson1:"+message+"\n\nPerson2:"
   response = openai.Completion.create(
   model="text-davinci-003",
