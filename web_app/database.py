@@ -6,7 +6,7 @@ def get_connection_str():
     return 'mongodb://db:27017/'
 
 def get_db(num):
-    cxn = pymongo.MongoClient(os.getenv('MONGO_URI'),
+    cxn = pymongo.MongoClient("mongodb://db:27017/?authSource=admin",
                               serverSelectionTimeoutMS=5000)
     db = ""
     if num == 0:
