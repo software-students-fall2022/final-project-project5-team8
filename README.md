@@ -83,11 +83,13 @@ Under root for the project, create `.env` file with content:
 ```env
 FLASK_DEBUG = development
 
-MONGO_URI = mongodb://db:27017/?authSource=admin
+MONGO_URI = mongodb+srv://doadmin:1064QhnZay98pt73@db-mongodb-nyc1-48676-bf5b041d.mongo.ondigitalocean.com/admin?authSource=admin
 MONGO_LANG_DBNAME = language
 MONGO_TEXT_DBNAME = text
 MONGO_USER = admin
 MONGO_PASS = 123456
+
+OPENAI_API_KEY = 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
 ```
 
 ## Required dependencies
