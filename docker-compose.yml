@@ -17,7 +17,5 @@ services:
   db:
     container_name: db
     image: mongo:latest
-    volumes:
-      - ./db/languages.js:/docker-entrypoint-languages.d/languages.js:ro 
     ports:
       - "27017:27017"
