@@ -69,7 +69,7 @@ class Test_Web_App(unittest.TestCase):
 
     def test_dashboard_delete(self):
         self.setUp()
-        reponse=self.client.get('/dashboard/delete')
+        reponse=self.client.get('/delete')
         assert reponse.status_code==200
 
     def test_post_translate(self):
@@ -89,11 +89,11 @@ class Test_Web_App(unittest.TestCase):
         db = get_db(0)
         entries = db.langs.find({})
         for cur in entries:
-            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"None"},follow_redirects=True)
+            response=self.client.post('/sort',data={"sort":cur["lang"], "filter":"None"},follow_redirects=True)
             assert response.status_code==200
-            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"Output language"},follow_redirects=True)
+            response=self.client.post('/sort',data={"sort":cur["lang"], "filter":"Output language"},follow_redirects=True)
             assert response.status_code==200
-            response=self.client.post('/dashboard/sort_filter',data={"sort":cur["lang"], "filter":"Input text"},follow_redirects=True)
+            response=self.client.post('/sort',data={"sort":cur["lang"], "filter":"Input text"},follow_redirects=True)
             assert response.status_code==200
 
     def test_upload_image_get(self):
