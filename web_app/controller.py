@@ -18,7 +18,6 @@ app.config['MONGO_URI'] = database.get_connection_str
 gtts(app)
 
 
-
 # ****************** All Routes ******************************#
 
 # route for homepage
@@ -140,9 +139,9 @@ def upload():
         f.filename = "user_image.jpg"
         f.save(f.filename)
         global transcript
-        transcript = pytesseract.image_to_string("user_image.jpg")
         try:
-            temp = trans.trans(transcript, "en", "cs")
+            transcript = pytesseract.image_to_string("user_image.jpg")
+            # temp = trans.trans(transcript, "en", "cs")
             return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
         except:
             return render_template('image_analysis.html', transcript=False, error=True)
