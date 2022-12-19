@@ -6,7 +6,7 @@ An exercise to put to practice software development teamwork, subsystem communic
 
 This is an open-ended exercise for you to show your mastery of software engineering, with some specific requirements:
 
-- Your software must be composed of at least 3 different subsystems
+- Your software must be composed of at least 2 different subsystems
 - One of those subsystems must be a MongoDB database - you do not need to create this yourself!
 - At least one subsystem must be a custom web application, written in Python using [flask](https://flask.palletsprojects.com/) and hosted with [Digital Ocean](https://m.do.co/c/4d1066078eb0) (this link will give you a free referral credit of $200 to use within 60 days).
 - The other subsystem(s) can be anything of your choosing, but code must be primarily written in Python.
