@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="./static/css/styles.css"
     />
   </head>
   <body>
     <header>
       <div class="page-logo">
         <img
-          src="{{ url_for('static', filename='img/logo.png') }}"
+          src="./static/img/logo.png"
           alt="logo"
         />
         <h1>Record Audio</h1>
       </div>
       <a
-        href="{{ url_for('dashboard_display') }}"
+        href="./dashboard"
         class="header-btn"
         id="db-btn"
         ><img
           class="db-img"
-          src="{{ url_for('static', filename='img/history.png') }}"
+          src="./static/img/history.png"
       /></a>
     </header>
     <main>
@@ -33,7 +33,7 @@
         <button id="pauseButton">Pause</button>
         <button id="stopButton">Stop</button>
         <div id="upload-controls">
-          <a href="{{ url_for('upload_image_page') }}" id="upload-btn"
+          <a href="./upload_image" id="upload-btn"
             >Upload Image</a
           >
         </div>
@@ -43,7 +43,7 @@
       <ol id="recordingsList"></ol>
       <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
       <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-      <script src="/static/js/app.js"></script>
+      <script src="./static/js/app.js"></script>
       <p>
         Select "Upload" next to the audio you would like to translate and select
         the language you would like to translate the recording to.
@@ -51,7 +51,7 @@
       <form
         class="form-inline"
         method="POST"
-        action="{{ url_for('translate') }}"
+        action="./translate"
       >
         <div class="form-group">
           <div class="input-group">

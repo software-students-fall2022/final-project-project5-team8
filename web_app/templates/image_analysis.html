@@ -6,28 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="./static/css/styles.css"
     />
   </head>
   <body>
     <header>
       <div class="page-logo">
         <img
-          src="{{ url_for('static', filename='img/logo.png') }}"
+          src="./static/img/logo.png"
           alt="logo"
         />
         <h1>Upload Your Image</h1>
       </div>
       <div class="trans-head-btn">
         <a
-          href="{{ url_for('dashboard_display') }}"
+          href="./dashboard"
           class="header-btn"
           id="db-btn"
           ><img
             class="db-img"
-            src="{{ url_for('static', filename='img/history.png') }}"
+            src="./static/img/history.png"
         /></a>
-        <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+        <a href="./" class="header-btn"> &#x2190; </a>
       </div>
     </header>
     <main>
@@ -52,7 +52,7 @@
       <form
         class="form-inline"
         method="POST"
-        action="{{ url_for('translate') }}"
+        action="./translate"
       >
         <div class="form-group">
           <div class="input-group">

@@ -6,28 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="./static/css/styles.css"
     />
   </head>
   <body>
     <header>
       <div class="page-logo">
         <img
-          src="{{ url_for('static', filename='img/logo.png') }}"
+          src="./static/img/logo.png"
           alt="logo"
         />
         <h1>Speech-to-text Translation</h1>
       </div>
       <div class="trans-head-btn">
         <a
-          href="{{ url_for('dashboard_display') }}"
+          href="./dashboard"
           class="header-btn"
           id="db-btn"
           ><img
             class="db-img"
-            src="{{ url_for('static', filename='img/history.png') }}"
+            src="./static/img/history.png"
         /></a>
-        <a href="{{ url_for('home') }}" class="header-btn"> &#x2190; </a>
+        <a href="./" class="header-btn"> &#x2190; </a>
       </div>
     </header>
     {% if error %}
@@ -40,7 +40,7 @@
           class="close"
           data-dismiss="alert"
           aria-label="Close"
-          href="{{ url_for('home') }}"
+          href="./"
         >
           <span aria-hidden="true">X</span>
         </a>
@@ -54,11 +54,11 @@
           <p class="result-txt">{{transcript}}</p>
           <audio controls class="trans-audio">
             {% set text = transcript %} {% set lang = 'en' %}
-            <source src="{{ sayit(lang, text)}}" />
+            <source src=".{{ sayit(lang, text)}}" />
           </audio>
         </div>
         <img
-          src="{{ url_for('static', filename='img/arrow.png') }}"
+          src="./static/img/arrow.png"
           alt="arrow symbol"
           id="arrow"
         />
@@ -67,7 +67,7 @@
           <p class="result-txt">{{in_out}}</p>
           <audio controls class="trans-audio">
             {% set text = in_out %} {% set lang = t %}
-            <source src="{{ sayit(lang, text)}}" />
+            <source src=".{{ sayit(lang, text)}}" />
           </audio>
         </div>
       </div>
