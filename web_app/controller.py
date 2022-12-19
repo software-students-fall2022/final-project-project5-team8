@@ -35,11 +35,11 @@ def home():
     out = db.langs.find({})
     if request.method == "POST":
         # get audio from app.js
-        f = request.files['audio_data']
+        file = request.files['audio_data']
         # save audio to audio.wav file through flask server
-        with open('audio.wav', 'wb') as audio:
-            f.save(audio)
-            file = 'audio.wav'
+        # with open('audio.wav', 'wb') as audio:
+        #     f.save(audio)
+        #     file = 'audio.wav'
         if file:
             # implement speech recognition
             recognizer = sr.Recognizer()
