@@ -141,11 +141,11 @@ def upload():
         f.save(f.filename)
         global transcript
         transcript = pytesseract.image_to_string("user_image.jpg")
-        try:
-            temp = trans.trans(transcript, "en", "cs")
-            return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
-        except:
+        temp = trans.trans(transcript, "en", "cs")
+        if transcript==temp:
             return render_template('image_analysis.html', transcript=False, error=True)
+        else:
+            return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
 
 
 if __name__ == "__main__":
