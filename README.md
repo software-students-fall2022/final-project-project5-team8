@@ -88,6 +88,8 @@ MONGO_LANG_DBNAME = language
 MONGO_TEXT_DBNAME = text
 MONGO_USER = admin
 MONGO_PASS = 123456
+
+OPENAI_API_KEY = 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
 ```
 
 ## Required dependencies
