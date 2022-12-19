@@ -27,7 +27,7 @@
             class="db-img"
             src="./static/img/history.png"
         /></a>
-        <a href="/" class="header-btn"> &#x2190; </a>
+        <a href="./" class="header-btn"> &#x2190; </a>
       </div>
     </header>
     {% if error %}
@@ -54,7 +54,7 @@
           <p class="result-txt">{{transcript}}</p>
           <audio controls class="trans-audio">
             {% set text = transcript %} {% set lang = 'en' %}
-            <source src="{{ sayit(lang, text)}}" />
+            <source src=".{{ sayit(lang, text)}}" />
           </audio>
         </div>
         <img
@@ -67,7 +67,7 @@
           <p class="result-txt">{{in_out}}</p>
           <audio controls class="trans-audio">
             {% set text = in_out %} {% set lang = t %}
-            <source src="{{ sayit(lang, text)}}" />
+            <source src=".{{ sayit(lang, text)}}" />
           </audio>
         </div>
       </div>
