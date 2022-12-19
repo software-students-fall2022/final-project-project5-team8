@@ -74,12 +74,26 @@ Try to connect using the user information created above.
 db.auth('admin', '123456')
 ```
 
-## Root environment
+## Root environment if running Locally 
 
 Create a `.env` file and can set them as environment variables.
 
 Under root for the project, create `.env` file with content:
 
+```env
+FLASK_DEBUG = True
+
+MONGO_URI = mongodb://db:27017/?authSource=admin
+MONGO_LANG_DBNAME = language
+MONGO_TEXT_DBNAME = text
+MONGO_USER = admin
+MONGO_PASS = 123456
+
+OPENAI_API_KEY = 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
+```
+
+
+## Root environment on DigitalOcean
 ```env
 FLASK_DEBUG = True
 
@@ -89,7 +103,7 @@ MONGO_TEXT_DBNAME = text
 MONGO_USER = admin
 MONGO_PASS = 123456
 
-OPENAI_API_KEY = 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
+OPENAI_API_KEY = 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
 ```
 ## Running with Docker
 1. Navigate to the root folder of this project, then run:
