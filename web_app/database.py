@@ -3,7 +3,7 @@ import pymongo
 import os
 
 def get_connection_str():
-    return 'mongodb://db:27017/'
+    return os.getenv('MONGO_URI')
 
 def get_db(num):
     cxn = pymongo.MongoClient(os.getenv('MONGO_URI'),
