@@ -7,7 +7,7 @@ def get_connection_str():
 
 def get_db(num):
     cxn = pymongo.MongoClient("mongodb://db:27017/?authSource=admin",
-                              serverSelectionTimeoutMS=5000)
+              serverSelectionTimeoutMS=5000)
     db = ""
     if num == 0:
         # store a reference to the database
