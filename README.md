@@ -81,7 +81,7 @@ Create a `.env` file and can set them as environment variables.
 Under root for the project, create `.env` file with content:
 
 ```env
-FLASK_DEBUG = development
+FLASK_DEBUG = True
 
 MONGO_URI = mongodb+srv://doadmin:1064QhnZay98pt73@db-mongodb-nyc1-48676-bf5b041d.mongo.ondigitalocean.com/admin?authSource=admin
 MONGO_LANG_DBNAME = language
@@ -91,6 +91,20 @@ MONGO_PASS = 123456
 
 OPENAI_API_KEY = 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
 ```
+## Running with Docker
+1. Navigate to the root folder of this project, then run:
+   ```
+   docker compose up
+   ```
+# Deployed Apps
+We have deployed both of our apps. You can try them using the links below:
+<br>
+[Web App](https://plankton-app-kozt5.ondigitalocean.app/hihillary-final-project-project/)
+
+# Docker Images
+We have pushed our custom subsystem images to DockerHub:
+<br>
+[Docker Hub Repo](https://hub.docker.com/r/hihillary/final-project-project5-team8-app/tags
 
 ## Required dependencies
 
