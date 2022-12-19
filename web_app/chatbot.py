@@ -38,5 +38,3 @@ def get_response(message,targ):
 )
   answer_eng=response["choices"][0]["text"].replace("\n","")
   return [answer_targ, answer_eng]
-
-print(get_response("我是弱智","Chinese"))
