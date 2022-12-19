@@ -3,8 +3,9 @@ import openai
 
 
 def get_response(message,targ):
-  openai.api_key = "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"
-  prompt="The following is a conversation in "+targ+" between two people.\n\nPerson1:"+message+"\n\nPerson2:"
+  openai.organization = "org-rWTLFGFyhzJxj2FXuNujO39c"
+  openai.api_key = os.environ.get("OPENAI_API_KEY")
+  prompt="The following is a conversation in "+targ+" between two people. Respond in the according language.\n\nPerson1:"+message+"\n\nPerson2:"
   response = openai.Completion.create(
   model="text-davinci-003",
   prompt=prompt,
@@ -36,4 +37,4 @@ def get_response(message,targ):
   presence_penalty=0.0
 )
   answer_eng=response["choices"][0]["text"].replace("\n","")
-  return answer_targ,answer_eng
+  return [answer_targ, answer_eng]

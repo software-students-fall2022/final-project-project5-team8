@@ -3,6 +3,7 @@ from dotenv import dotenv_values
 from flask_gtts import gtts
 import speech_recognition as sr
 import database
+import chatbot
 from PIL import Image
 from pytesseract import pytesseract
 import os
@@ -72,7 +73,15 @@ def translate():
     except:
         return render_template('translate.html', error=True)
     database.db_text_add(db_text, transcript, out, in_out, t)
-    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, t=t)
+    # get possible response from bot
+    try:
+        pr = chatbot.get_response(transcript, t)
+        resp = pr[0]
+        resp_transl = pr[1]
+    except:
+        resp = "N/A"
+        resp_transl = "N/A"
+    return render_template('translate.html', in_out=in_out, transcript=transcript, out=out, t=t, resp=resp, resp_transl=resp_transl)
 
 
 @app.route('/dashboard', methods=["GET"])

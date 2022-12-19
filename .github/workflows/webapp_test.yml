@@ -49,6 +49,7 @@ jobs:
           sudo apt-get install flac
           python -m pip install --upgrade PyAudio
           python -m pip install flake8 pytest
+          python -m pip install openai
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: MongoDB in GitHub Actions
         uses: supercharge/mongodb-github-action@1.8.0
