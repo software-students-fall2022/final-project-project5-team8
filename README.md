@@ -4,7 +4,7 @@
 
 ![Workflow Status](https://github.com/software-students-fall2022/containerized-app-exercise-team7/actions/workflows/machine_learning_test.yml/badge.svg?event=push)
 
-# Containerized App Exercise
+# Final project team 8
 
 Build a containerized app that uses machine learning. See [instructions](./instructions.md) for details.
 
@@ -105,7 +105,10 @@ MONGO_PASS = 123456
 
 OPENAI_API_KEY = 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
 ```
+**Please be aware that the OPENAI_API_KEY is only valid for a limited time due to openai company measures, please contact our group member if a new api key is needed. Without a proper api key, some functions for our app would not work but wouldn't affect other features.**
+
 ## Running with Docker
+
 1. Navigate to the root folder of this project, then run:
    ```
    docker compose up
