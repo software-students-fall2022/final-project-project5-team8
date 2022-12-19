@@ -89,7 +89,7 @@ MONGO_TEXT_DBNAME = text
 MONGO_USER = admin
 MONGO_PASS = 123456
 
-OPENAI_API_KEY = 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
+OPENAI_API_KEY = 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
 ```
 ## Running with Docker
 1. Navigate to the root folder of this project, then run:
