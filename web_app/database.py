@@ -1,13 +1,12 @@
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 import pymongo
 import os
 
 def get_connection_str():
-    return 'mongodb://db:27017/'
+    return os.getenv('MONGO_URI')
 
 def get_db(num):
-    cxn = pymongo.MongoClient("mongodb://db:27017/?authSource=admin",
-              serverSelectionTimeoutMS=5000)
+    cxn = pymongo.MongoClient(os.getenv('MONGO_URI'), serverSelectionTimeoutMS=5000)
     db = ""
     if num == 0:
         # store a reference to the database
