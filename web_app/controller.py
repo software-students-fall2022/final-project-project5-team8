@@ -142,7 +142,7 @@ def upload():
         global transcript
         transcript = pytesseract.image_to_string("user_image.jpg")
         temp = trans.trans(transcript, "en", "cs")
-        if transcript==temp:
+        if temp=="":
             return render_template('image_analysis.html', transcript=False, error=True)
         else:
             return render_template('image_analysis.html', transcript=transcript, out=lang, file=f.filename)
