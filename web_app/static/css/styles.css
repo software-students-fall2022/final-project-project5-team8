@@ -247,6 +247,15 @@ img {
   margin: 0;
 }
 
+#poss-resp {
+  margin-top: 50px;
+  margin-right: 150px;
+}
+
+#resp-transl {
+  margin-top: 50px;
+}
+
 #arrow { 
   width: 150px;
   height: 150px;

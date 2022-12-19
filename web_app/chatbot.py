@@ -36,6 +36,6 @@ def get_response(message,targ):
   presence_penalty=0.0
 )
   answer_eng=response["choices"][0]["text"].replace("\n","")
-  return answer_targ,answer_eng
+  return [answer_targ, answer_eng]
 
 print(get_response("我是弱智","Chinese"))
