@@ -3,9 +3,11 @@ import pymongo
 import os
 
 def get_connection_str():
+    load_dotenv()
     return os.getenv('MONGO_URI')
 
 def get_db(num):
+    load_dotenv()
     cxn = pymongo.MongoClient(os.getenv('MONGO_URI'), serverSelectionTimeoutMS=5000)
     db = ""
     if num == 0:
