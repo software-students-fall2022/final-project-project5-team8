@@ -92,7 +92,7 @@ def dashboard_display():
     return render_template('dashboard.html', translations=translations, count=count, lang=lang)
 
 
-@app.route('/dashboard/delete', methods=["GET", "POST"])
+@app.route('/delete', methods=["GET", "POST"])
 def delete_history():
     lang = database.get_db(0).langs.find({})
     database.get_db(1).hist.delete_many({})
